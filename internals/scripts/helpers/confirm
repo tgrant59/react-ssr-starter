@@ -1,0 +1,16 @@
+#!/bin/bash
+
+RED='\033[1;31m'
+NC='\033[0m' # No Color
+
+# call with a prompt string or use a default
+echo -e -n "${RED}${1:-Are you sure?} [y/N] ${NC}"
+read -r -p "" response
+case "$response" in
+  [yY][eE][sS]|[yY])
+    true
+    ;;
+  *)
+    false
+    ;;
+esac

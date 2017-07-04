@@ -1,0 +1,9 @@
+version: '2'
+
+options:
+  compose-file-path: 'docker-compose.yml'
+  project_root: 'config_path/../..'
+
+syncs:
+  mash-sync:
+    src: '.'
