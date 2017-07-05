@@ -16,7 +16,7 @@ jobs:
 
       - run:
           name: Build Docker image
-          command: yarn docker:build:production
+          command: yarn docker:build:ci
 
       - run:
           name: Run linter
