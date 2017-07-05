@@ -21,11 +21,9 @@ jobs:
       - run:
           name: Run linter
           command: |
-            docker run -d --name ssr ssr-production
-            docker exec ssr yarn lint
+            docker run ssr-production yarn lint
 
       - run:
           name: Run tests
           command: |
-            docker run -d --name ssr ssr-production
-            docker exec ssr yarn test
+            docker run ssr-production yarn test
