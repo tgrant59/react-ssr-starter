@@ -4,6 +4,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.1.2
+    working_directory: ~/react-ssr-starter
     steps:
       - run:
           name: Install yarn
