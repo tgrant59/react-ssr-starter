@@ -8,7 +8,7 @@ jobs:
     steps:
       - run:
           name: Install yarn
-          command: npm install -g yarn
+          command: sudo npm install -g yarn
 
       - checkout
 
