@@ -20,7 +20,7 @@ jobs:
 
       - run:
           name: Run Docker container
-          command: docker run --name ssr ssr-production
+          command: docker run -d --name ssr ssr-production
 
       - run:
           name: Run linter

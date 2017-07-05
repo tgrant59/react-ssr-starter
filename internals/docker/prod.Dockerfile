@@ -14,4 +14,3 @@ RUN yarn install --production --ignore-scripts --offline
 RUN yarn cache clean
 
 EXPOSE 3000
-CMD yarn start:production
