@@ -25,6 +25,7 @@ A starter boilerplate for a React SSR app. Ready to be deployed with Docker.
 
 ## Commands
 
+- `yarn scripts` - List all Yarn scripts
 - `yarn docker:build` - Build the docker images
 - `yarn docker:start` - Start the hot-reloading server
 - `yarn docker:connect` - Connect to the container
@@ -32,7 +33,7 @@ A starter boilerplate for a React SSR app. Ready to be deployed with Docker.
   - `yarn test` - Run the entire test suite
   - `yarn test:watch` - Start the hot-reloading
   - `yarn lint` - Lint the code base
-  - `yarn lint:fix` - Lint and autofix styling problems in the code base
+  - `yarn lint:fix` - Lint the code base, autofixing problems where possible
   - `yarn generate` - Generate new components (also containers, routes, etc.) from templates
   - `yarn extract-intl` - Extract the internationalization messages to create transalations
   - `yarn analyze` - Generate stats on the Webpack build. Upload stats.json to the [Webpack build analyzer](https://webpack.github.io/analyse/)

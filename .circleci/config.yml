@@ -1,0 +1,31 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.1.2
+    working_directory: /react-ssr-starter
+    steps:
+      - run:
+          name: Install yarn
+          command: npm install -g yarn
+
+      - checkout
+
+      - setup_remote_docker
+
+      - run:
+          name: Build Docker image
+          command: yarn docker:build:production
+
+      - run:
+          name: Run Docker container
+          command: docker run --name ssr ssr-production
+
+      - run:
+          name: Run linter
+          command: docker exec ssr yarn lint
+
+      - run:
+          name: Run tests
+          command: docker exec ssr yarn test
