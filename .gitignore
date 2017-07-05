@@ -1,5 +1,5 @@
-# Cruft files #
-# ----------- #
+# Cruft #
+# ----- #
 .DS_Store
 .DS_Store?
 ._*
@@ -10,12 +10,14 @@ Thumbs.db
 .idea/
 unison.*
 
-# Project files #
-# ------------- #
+# Project Generated files #
+# ----------------------- #
 .git/
 node_modules/
 build/
-coverage/
+artifacts/
 internals/docker/.docker-sync/
 npm-debug.log
 stats.json
+jest/
+v8-compile-cache-0/
