@@ -19,19 +19,23 @@ jobs:
           command: yarn docker:build:ci
 
       - run:
-          name: List JS
-          command: docker run --name ssr ssr-production yarn lint:js:ci
+          name: Start Docker container
+          command: docker run -d --name ssr ssr-production tail -f /dev/null
 
       - run:
-          name: List CSS
-          command: docker run --name ssr ssr-production yarn lint:css:ci
+          name: Lint JS
+          command: docker exec ssr yarn lint:js:ci
+
+      - run:
+          name: Lint CSS
+          command: docker exec ssr yarn lint:css:ci
 
       - run:
           name: Run tests
-          command: docker run --name ssr ssr-production yarn test:ci
+          command: docker exec ssr yarn test:ci
 
       - run:
-          name: Retrieve artifacts
+          name: Retrieve artifacts from Docker container
           command: docker cp ssr:artifacts ./artifacts
 
       - store_artifacts:
