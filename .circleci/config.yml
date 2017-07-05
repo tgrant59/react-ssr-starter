@@ -9,21 +9,18 @@ jobs:
       - run:
           name: Install yarn
           command: sudo npm install -g yarn
-
       - checkout
-
       - setup_remote_docker
-
       - run:
           name: Build Docker image
           command: yarn docker:build:ci
-
       - run:
           name: Run linter
           command: |
             docker run ssr-production yarn lint
-
       - run:
           name: Run tests
           command: |
             docker run ssr-production yarn test
+      - store_test_results:
+          path: artifacts/test_results

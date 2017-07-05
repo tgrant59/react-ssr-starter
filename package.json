@@ -46,7 +46,7 @@
     "docker:start": "yarn docker:watch && docker-compose -f internals/docker/docker-compose.yml up ssr",
     "docker:destroy": "internals/scripts/helpers/confirm 'This will destroy ALL docker containers, images, and volumes. Are you sure?' && docker-clean all",
     "lint": "yarn lint:js && yarn lint:css",
-    "lint:eslint": "node_modules/.bin/eslint --ignore-path '.gitignore' --ignore-pattern 'internals/scripts' --ignore-pattern 'generated.*'",
+    "lint:eslint": "node_modules/.bin/eslint --ignore-path '.gitignore' --ignore-pattern 'internals/scripts' --ignore-pattern 'generated.*' --format junit --output-file artifacts/test_results/eslint/eslint.xml",
     "lint:stylelint": "node_modules/.bin/stylelint",
     "lint:js": "yarn lint:eslint -- .",
     "lint:css": "yarn lint:stylelint './app/**/*.js'",
@@ -120,7 +120,7 @@
   },
   "jest-junit": {
     "suiteName": "React SSR Starter Tests",
-    "output": "./artifacts/junit.xml"
+    "output": "./artifacts/test_results/jest/junit.xml"
   },
   "dependencies": {
     "babel-polyfill": "6.22.0",
