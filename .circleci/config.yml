@@ -36,7 +36,7 @@ jobs:
 
       - run:
           name: Retrieve artifacts from Docker container
-          command: docker cp ssr:artifacts ./artifacts
+          command: docker cp ssr:react-ssr-starter/artifacts ./artifacts
 
       - store_artifacts:
           path: ./artifacts
