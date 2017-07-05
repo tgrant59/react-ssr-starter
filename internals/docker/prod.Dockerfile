@@ -1,4 +1,4 @@
-FROM mash-base
+FROM ssr-base
 
 # Install project dependencies and Build project
 COPY . .

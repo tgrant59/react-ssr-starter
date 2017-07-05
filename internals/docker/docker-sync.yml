@@ -5,5 +5,7 @@ options:
   project_root: 'config_path/../..'
 
 syncs:
-  mash-sync:
+  ssr-sync:
     src: '.'
+    sync_excludes: ['node_modules/']
+    watch_excludes: ['.*/node_modules']

@@ -1,11 +1,11 @@
 {
-  "name": "mash",
+  "name": "ssr",
   "version": "0.0.1",
-  "description": "The online publication of Mash Magazine",
+  "description": "The React SSR Starter App",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/tgrant59/mash.git"
+    "url": "git://github.com/tgrant59/react-ssr-starter.git"
   },
   "engines": {
     "npm": ">=3",
@@ -35,13 +35,13 @@
     "test:precommit": "node_modules/.bin/cross-env NODE_ENV=test jest --bail --findRelatedTests",
     "docker:build": "yarn docker:build-image:base && yarn docker:build-image:dev",
     "docker:build:production": "yarn docker:build-image:base && yarn docker:build-image:prod",
-    "docker:build-image:base": "docker build . -f internals/docker/base.Dockerfile -t mash-base --squash",
-    "docker:build-image:dev": "docker volume create mash && docker build . -f internals/docker/dev.Dockerfile -t mash-dev",
-    "docker:build-image:prod": "docker build . -f internals/docker/prod.Dockerfile -t mash-production --squash",
-    "docker:watch": "if [ ! \"$(docker ps | grep mash-sync)\" ]; then yarn docker:watch:start; fi;",
+    "docker:build-image:base": "docker build . -f internals/docker/base.Dockerfile -t ssr-base --squash",
+    "docker:build-image:dev": "docker volume create ssr && docker build . -f internals/docker/dev.Dockerfile -t ssr-dev",
+    "docker:build-image:prod": "docker build . -f internals/docker/prod.Dockerfile -t ssr-production --squash",
+    "docker:watch": "if [ ! \"$(docker ps | grep ssr-sync)\" ]; then yarn docker:watch:start; fi;",
     "docker:watch:start": "docker-sync start --dir=./internals/docker/.docker-sync -c=./internals/docker/docker-sync.yml",
-    "docker:connect": "yarn docker:watch && docker-compose -f internals/docker/docker-compose.yml run mash bash",
-    "docker:start": "yarn docker:watch && docker-compose -f internals/docker/docker-compose.yml up mash",
+    "docker:connect": "yarn docker:watch && docker-compose -f internals/docker/docker-compose.yml run ssr bash",
+    "docker:start": "yarn docker:watch && docker-compose -f internals/docker/docker-compose.yml up ssr",
     "docker:destroy": "internals/scripts/helpers/confirm 'This will destroy ALL docker containers, images, and volumes. Are you sure?' && docker-clean all",
     "lint": "yarn lint:js && yarn lint:css",
     "lint:eslint": "node_modules/.bin/eslint --ignore-path '.gitignore' --ignore-pattern 'internals/scripts' --ignore-pattern 'generated.*'",
@@ -57,6 +57,7 @@
     "coveralls": "cat ./coverage/lcov.info | node_modules/.bin/coveralls",
     "extract-intl": "node_modules/.bin/babel-node --presets env,stage-0 -- ./internals/scripts/extract-intl.js",
     "generate": "node_modules/.bin/plop --plopfile internals/generators/index.js",
+    "scripts": "node_modules/.bin/list-scripts",
     "open:coverage": "open ./coverage/lcov-report/index.html"
   },
   "lint-staged": {
@@ -193,6 +194,7 @@
     "imports-loader": "0.7.0",
     "jest-cli": "18.1.0",
     "lint-staged": "3.3.0",
+    "list-scripts": "^0.0.4",
     "mkdirp": "^0.5.1",
     "ngrok": "2.2.6",
     "node-fetch": "^1.7.0",

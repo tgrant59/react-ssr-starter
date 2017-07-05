@@ -1,18 +1,18 @@
 version: '3.0'
 
 services:
-  mash:
+  ssr:
     build:
       context: ../..
       dockerfile: internals/docker/dev.Dockerfile
     command: yarn start
-    container_name: mash-dev-server
-    image: mash-dev
+    container_name: ssr-dev-server
+    image: ssr-dev
     ports:
       - 3000:3000
     volumes:
-      - mash-sync:/mash:nocopy
+      - ssr-sync:/react-ssr-starter:nocopy
 
 volumes:
-  mash-sync:
+  ssr-sync:
     external: true

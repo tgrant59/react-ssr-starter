@@ -1,4 +1,4 @@
-FROM mash-base
+FROM ssr-base
 
 # Install system dependencies
 RUN apk add --no-cache \

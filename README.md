@@ -1,16 +1,6 @@
-# Mash Magazine
+# React SSR Starter
 
-The online publication of Mash Magazine
-
-## Documentation
-
-- [**The Hitchhikers Guide to `mash`**](docs/general/introduction.md): An introduction for newcomers to this boilerplate.
-- [Overview](docs/general): A short overview of the included tools
-- [**Commands**](docs/general/commands.md): Getting the most out of this boilerplate
-- [Testing](docs/testing): How to work with the built-in test harness
-- [Styling](docs/css): How to work with the CSS tooling
-- [Your app](docs/js): Supercharging your app with Routing, Redux, simple asynchronicity helpers, etc.
-- [**Troubleshooting**](docs/general/gotchas.md): Solutions to common problems faced by developers.
+A starter boilerplate for a React SSR app. Ready to be deployed with Docker.
 
 ## Setup
 
@@ -24,8 +14,8 @@ The online publication of Mash Magazine
 
 1. Clone the repo
   ```bash
-  git clone https://github.com/tgrant59/mash.git
-  cd mash
+  git clone https://github.com/tgrant59/react-ssr-starter
+  cd react-ssr-starter
   ```
   
 1. Run setup script
