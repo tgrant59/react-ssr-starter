@@ -33,6 +33,7 @@
     "test:clean": "node_modules/.bin/rimraf ./artifacts",
     "test:watch": "node_modules/.bin/cross-env NODE_ENV=test jest --watchAll",
     "test:precommit": "node_modules/.bin/cross-env NODE_ENV=test jest --bail --findRelatedTests",
+    "test:ci": "node_modules/.bin/cross-env NODE_ENV=test jest --coverage",
     "docker:build": "yarn docker:build-image:base --squash && yarn docker:build-image:dev",
     "docker:build:production": "yarn docker:build-image:base --squash && yarn docker:build-image:prod --squash",
     "docker:build:ci": "yarn docker:build-image:base && yarn docker:build-image:ci",
@@ -46,11 +47,13 @@
     "docker:start": "yarn docker:watch && docker-compose -f internals/docker/docker-compose.yml up ssr",
     "docker:destroy": "internals/scripts/helpers/confirm 'This will destroy ALL docker containers, images, and volumes. Are you sure?' && docker-clean all",
     "lint": "yarn lint:js && yarn lint:css",
-    "lint:eslint": "node_modules/.bin/eslint --ignore-path '.gitignore' --ignore-pattern 'internals/scripts' --ignore-pattern 'generated.*' --format junit --output-file artifacts/test_results/eslint/eslint.xml",
+    "lint:fix": "yarn lint:js -- --fix",
+    "lint:eslint": "node_modules/.bin/eslint --ignore-path '.gitignore' --ignore-pattern 'internals/scripts' --ignore-pattern 'generated.*'",
     "lint:stylelint": "node_modules/.bin/stylelint",
     "lint:js": "yarn lint:eslint -- .",
-    "lint:css": "yarn lint:stylelint './app/**/*.js'",
-    "lint:fix": "node_modules/.bin/eslint --ignore-path '.gitignore' --ignore-pattern 'internals/scripts' --ignore-pattern 'generated.*' --fix -- .",
+    "lint:css": "yarn lint:stylelint -- \"'./app/**/*.js'\"",
+    "lint:js:ci": "yarn lint:js -- --format junit --output-file artifacts/test_results/eslint/eslint.junit.xml",
+    "lint:css:ci": "yarn lint:css -- --custom-formatter node_modules/stylelint-junit-formatter > stylelint.junit.xml",
     "preanalyze": "yarn analyze:clean",
     "analyze": "node ./internals/scripts/analyze.js",
     "analyze:clean": "node_modules/.bin/rimraf stats.json",
@@ -120,7 +123,7 @@
   },
   "jest-junit": {
     "suiteName": "React SSR Starter Tests",
-    "output": "./artifacts/test_results/jest/junit.xml"
+    "output": "./artifacts/test_results/jest/jest.junit.xml"
   },
   "dependencies": {
     "babel-polyfill": "6.22.0",
@@ -222,6 +225,7 @@
     "style-loader": "0.13.1",
     "stylelint": "^7.12.0",
     "stylelint-config-standard": "^16.0.0",
+    "stylelint-junit-formatter": "^0.2.0",
     "stylelint-processor-styled-components": "^0.1.2",
     "tree-kill": "^1.1.0",
     "url-loader": "0.5.7",
