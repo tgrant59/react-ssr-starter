@@ -15,7 +15,7 @@
   "scripts": {
     "postinstall": "yarn build:dll",
     "prebuild": "yarn build:clean",
-    "build": "node_modules/.bin/cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p --progress --hide-modules",
+    "build": "node_modules/.bin/cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p --hide-modules",
     "postbuild": "yarn ssr:render-static-pages",
     "build:clean": "node_modules/.bin/rimraf ./build && yarn ssr:clean",
     "build:dll": "node ./internals/scripts/dependencies.js",

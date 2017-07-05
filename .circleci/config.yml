@@ -19,13 +19,13 @@ jobs:
           command: yarn docker:build:production
 
       - run:
-          name: Run Docker container
-          command: docker run -d --name ssr ssr-production
-
-      - run:
           name: Run linter
-          command: docker exec ssr yarn lint
+          command: |
+            docker run -d --name ssr ssr-production
+            docker exec ssr yarn lint
 
       - run:
           name: Run tests
-          command: docker exec ssr yarn test
+          command: |
+            docker run -d --name ssr ssr-production
+            docker exec ssr yarn test
