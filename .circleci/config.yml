@@ -21,15 +21,19 @@ jobs:
       - run:
           name: Lint JS
           command: docker exec ssr yarn lint:js:ci
+          when: always
       - run:
           name: Lint CSS
           command: docker exec ssr yarn lint:css:ci
+          when: always
       - run:
           name: Run tests
           command: docker exec ssr yarn test:ci
+          when: always
       - run:
           name: Retrieve artifacts from Docker container
           command: docker cp ssr:react-ssr-starter/artifacts ./artifacts
+          when: always
       - store_artifacts:
           path: ./artifacts
       - store_test_results:
