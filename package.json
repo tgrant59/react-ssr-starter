@@ -53,7 +53,7 @@
     "lint:js": "yarn lint:eslint -- .",
     "lint:css": "yarn lint:stylelint -- \"'./app/**/*.js'\"",
     "lint:js:ci": "yarn lint:js -- --format junit --output-file artifacts/test_results/eslint/eslint.junit.xml",
-    "lint:css:ci": "yarn lint:css -- --custom-formatter node_modules/stylelint-junit-formatter > artifacts/test_results/stylelint/stylelint.junit.xml",
+    "lint:css:ci": "node_modules/.bin/stylelint './app/**/*.js' --custom-formatter node_modules/stylelint-junit-formatter > artifacts/test_results/stylelint/stylelint.junit.xml",
     "preanalyze": "yarn analyze:clean",
     "analyze": "node ./internals/scripts/analyze.js",
     "analyze:clean": "node_modules/.bin/rimraf stats.json",
