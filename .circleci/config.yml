@@ -35,6 +35,6 @@ jobs:
           command: docker cp ssr:react-ssr-starter/artifacts ./artifacts
           when: always
       - store_artifacts:
-          path: ./artifacts
+          path: artifacts
       - store_test_results:
-          path: ./artifacts/test_results
+          path: artifacts/test_results
