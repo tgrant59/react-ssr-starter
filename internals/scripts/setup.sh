@@ -28,13 +28,10 @@ run () {
 
 # ================== Setup Commands ==================
 
-# Install Homebrew
-run "dabas alsdk kd"
-run "/usr/bin/ruby -e \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
-
 # Install System Dependencies
-run "brew install node yarn docker docker-clean"
-run "gem install docker-sync"
+run "brew install node yarn docker-clean"
+run "brew cask install docker"
+run "sudo gem install docker-sync"
 
 # Build Project Images
 run "yarn docker:build"

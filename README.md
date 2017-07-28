@@ -22,6 +22,14 @@ A starter boilerplate for a React SSR app. Ready to be deployed with Docker.
   ```bash
   ./internals/scripts/setup.sh
   ```
+  
+### Optional Additional Setup
+
+1. Install dependencies locally (outside of Docker container) to use local scripts
+  ```bash
+  yarn
+  ```
+  
 
 ## Commands
 
